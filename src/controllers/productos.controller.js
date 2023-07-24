@@ -31,7 +31,7 @@ export const createProducto = async (req, res) => {
     try {
         const { nombre, precio } = req.body
         const [rows] = await pool.query('INSERT INTO productos(nombre, precio) VALUES(?, ?)', [nombre, precio])
-        res.send({
+        res.status(201).json({
             id: rows.insertId,
             nombre,
             precio
